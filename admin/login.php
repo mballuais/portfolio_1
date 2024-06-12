@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion Admin</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_login.css">
 </head>
 <body>
     <header>
@@ -55,9 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <button type="submit">Connexion</button>
             </p>
             <?php if (isset($error)): ?>
-                <p style="color:red;"><?php echo $error; ?></p>
+                <p id="error"><?php echo $error; ?></p>
             <?php endif; ?>
         </form>
     </section>
+    <script src="../js/script.js"></script>
 </body>
 </html>

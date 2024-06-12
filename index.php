@@ -33,6 +33,7 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
             <nav>
                 <ul>
                     <li><a href="#projects">Projets</a></li>
+                    <li class="admin-login"><a href="admin/login.php">Connexion Admin</a></li>
                 </ul>
             </nav>
         </div>
@@ -51,7 +52,7 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="bio">
                 <h2>Bienvenue sur mon portfolio</h2>
-                <p>Je suis Matteo Balluais, étudiant en Chef de Projet Digital à la Normandie Web School. Explorez avec moi le mariage entre passion et programmation.</p>
+                <p>Bienvenue sur mon site dédié à l’univers du digital ! Je suis Mattéo BALLUAIS, étudiant en Chef de Projet Digital à la Normandie Web School. Explorez avec moi le mariage entre passion et programmation. Découvrez comment mes compétences en développement web prennent vie à travers des projets concrets.</p>
                 <a href="#projects" class="btn">En savoir plus</a>
             </div>
         </div>
@@ -63,12 +64,12 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
                 <div class="skill">
                     <img src="images/web-development.png" alt="Développement Web">
                     <h3>Développement Web</h3>
-                    <p>Création de sites web interactifs, esthétiques et fonctionnels.</p>
+                    <p>Mon expertise me permet de créer des sites web interactifs, esthétiques et fonctionnels. Que ce soit pour concevoir des interfaces utilisateur intuitives, optimiser les performances ou assurer la compatibilité multiplateforme, je m’engage à fournir des solutions web de qualité, alignées sur les dernières tendances technologiques.</p>
                 </div>
                 <div class="skill">
                     <img src="images/project-management.png" alt="Gestion de projet">
                     <h3>Gestion de projet</h3>
-                    <p>Coordination des initiatives numériques de la planification à la réalisation.</p>
+                    <p>Doté d’une solide compétence en gestion de projets digitaux, je coordonne avec succès des initiatives numériques, de la planification à la réalisation. Ma méthodologie efficace et ma compréhension approfondie des tendances digitales garantissent la réussite des projets, en optimisant la visibilité en ligne, l’expérience utilisateur et les objectifs commerciaux</p>
                 </div>
             </div>
         </div>
