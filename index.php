@@ -23,23 +23,29 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Matteo Balluais</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Bebas+Neue&display=swap">
 </head>
+
+
 <body>
-    <header>
+    <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png" alt="Logo">
+                <a href="#"><img src="images/logo.png" alt="Logo"></a>
             </div>
             <nav>
-                <ul>
-                    <li><a href="#projects">Projets</a></li>
-                    <li class="admin-login"><a href="admin/login.php">Connexion Admin</a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item admin-login"><a class="nav-link" href="admin/login.php">Connexion Admin</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <section id="main">
-        <div class="background-image"></div>
+        <div id="particles-js" class="particles"></div> <!-- Div pour les particules -->
         <div class="main-content">
             <h1>Matteo Balluais</h1>
             <p>Développeur Web</p>
@@ -84,6 +90,7 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
                             <img src="images/<?php echo htmlspecialchars($project['image']); ?>" alt="<?php echo htmlspecialchars($project['title']); ?>">
                             <h3><?php echo htmlspecialchars($project['title']); ?></h3>
                         </a>
+                        <p><?php echo htmlspecialchars($project['skills']); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -102,5 +109,7 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
             <p>&copy; 2023 Matteo Balluais. Tous droits réservés.</p>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/scriptindex.js"></script> 
 </body>
 </html>

@@ -12,16 +12,28 @@ $db = 'portfolio';
 $user = 'root';
 $pass = 'admin';
 
-$conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Récupérer l'ID du projet depuis l'URL
-$project_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    // Récupérer l'ID du projet depuis l'URL
+    $project_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Supprimer le projet de la base de données
-$query = $conn->prepare("DELETE FROM projects WHERE id = :id");
-$query->bindParam(':id', $project_id, PDO::PARAM_INT);
-$query->execute();
+    // Supprimer les commentaires associés au projet
+    $delete_comments = $conn->prepare("DELETE FROM comments WHERE project_id = :project_id");
+    $delete_comments->bindParam(':project_id', $project_id, PDO::PARAM_INT);
+    $delete_comments->execute();
 
-// Rediriger vers le dashboard
-header('Location: dashboard.php');
-exit();
+    // Supprimer le projet de la base de données
+    $delete_project = $conn->prepare("DELETE FROM projects WHERE id = :id");
+    $delete_project->bindParam(':id', $project_id, PDO::PARAM_INT);
+    $delete_project->execute();
+
+    // Rediriger vers le dashboard
+    header('Location: dashboard.php');
+    exit();
+
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+}
+?>

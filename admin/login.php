@@ -8,7 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = 'root';
     $pass = 'admin';
 
-    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    try {
+        $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die("Erreur de connexion : " . $e->getMessage());
+    }
 
     // Récupérer les informations du formulaire
     $username = $_POST['username'];
@@ -39,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <header>
+        <a href="../" class="back-button">&larr; Retour</a>
         <h1>Connexion Admin</h1>
     </header>
     <section id="login">
