@@ -1,11 +1,10 @@
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #1c1f24;
   color: #fff;
   margin: 0;
   padding: 0;
 }
-
 .header {
   background-color: #2a2e35;
   padding: 1rem;
@@ -61,6 +60,7 @@ body {
 
 #project-details h2,
 #comments h2 {
+  font-family: "Oswald", sans-serif;
   border-bottom: 2px solid #00bcd4;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;

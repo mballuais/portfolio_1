@@ -1,5 +1,5 @@
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #1c1f24;
   color: #fff;
   margin: 0;
@@ -24,7 +24,7 @@ body {
 }
 
 .header .logo img {
-  max-height: 50px;
+  max-height: 60px;
 }
 
 .header .navbar-nav {
@@ -32,6 +32,7 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
 }
 
 .header .nav-item {
@@ -50,6 +51,25 @@ body {
   background-color: #00bcd4;
   color: #1c1f24;
   border-radius: 5px;
+}
+
+.header .admin-login {
+  margin-left: auto; /* S'assurer que ce lien est aligné à droite */
+  margin-right: 30px; /* Ajouter une marge à droite */
+}
+
+.header .btn-outline-light {
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header .btn-outline-light:hover {
+  background-color: #0097a7;
 }
 
 #main {
@@ -74,7 +94,7 @@ body {
 }
 
 .main-content h1 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 48px;
   margin: 0;
   color: #00bcd4;
@@ -95,11 +115,11 @@ body {
 
 #about .profile-photo {
   flex: 1;
-  max-width: 30%;
+  max-width: 20%;
 }
 
 #about .profile-photo img {
-  max-width: 100%;
+  max-width: 50%;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
@@ -110,7 +130,7 @@ body {
 }
 
 #about .bio h2 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
   color: #00bcd4;
@@ -119,6 +139,10 @@ body {
 #about .bio p {
   font-size: 18px;
   line-height: 1.6;
+  background-color: #2a2e35;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 #about .bio .btn {
@@ -143,7 +167,7 @@ body {
 }
 
 #skills h2 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
   color: #00bcd4;
@@ -151,27 +175,29 @@ body {
 
 .skills-grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .skill {
-  flex: 1;
+  flex: 1 1 calc(25% - 1rem); /* Réduire la largeur des compétences */
+  max-width: 600px; /* Fixer une largeur maximale */
   background-color: #2a2e35;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   text-align: center;
-  max-width: 45%;
+  margin: 0.5rem;
 }
 
 .skill img {
-  max-width: 80px;
+  max-width: 160px;
   margin-bottom: 1rem;
 }
 
 .skill h3 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 20px;
   margin-bottom: 0.5rem;
   color: #00bcd4;
@@ -189,7 +215,7 @@ body {
 }
 
 #projects h2 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
   color: #00bcd4;
@@ -224,7 +250,7 @@ body {
 }
 
 .project-item h3 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 18px;
   margin: 0;
   color: #00bcd4;
@@ -241,7 +267,7 @@ body {
 }
 
 #contact h2 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
   color: #00bcd4;

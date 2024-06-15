@@ -23,9 +23,8 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Matteo Balluais</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Bebas+Neue&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@300;400;500;700&display=swap">
 </head>
-
 
 <body>
     <header class="header">
@@ -36,9 +35,6 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
             <nav>
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item admin-login"><a class="nav-link" href="admin/login.php">Connexion Admin</a></li>
                 </ul>
             </nav>
@@ -58,7 +54,9 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="bio">
                 <h2>Bienvenue sur mon portfolio</h2>
-                <p>Bienvenue sur mon site dédié à l’univers du digital ! Je suis Mattéo BALLUAIS, étudiant en Chef de Projet Digital à la Normandie Web School. Explorez avec moi le mariage entre passion et programmation. Découvrez comment mes compétences en développement web prennent vie à travers des projets concrets.</p>
+                <p>Je suis Matteo Balluais, étudiant en Bachelor Chef de Projets Digitaux à la Normandie Web School et passionné par le développement web. Je recherche une alternance dès septembre 2024 pour renforcer mes compétences en PHP, JavaScript, WordPress, Python et MySQL.
+
+Mon parcours inclut le développement d'une application de devis automobiles en Python et ReactJS chez Promo Assurance, ainsi que des projets associatifs et sportifs qui montrent mon esprit d'équipe et mon leadership.</p>
                 <a href="#projects" class="btn">En savoir plus</a>
             </div>
         </div>
@@ -90,7 +88,7 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
                             <img src="images/<?php echo htmlspecialchars($project['image']); ?>" alt="<?php echo htmlspecialchars($project['title']); ?>">
                             <h3><?php echo htmlspecialchars($project['title']); ?></h3>
                         </a>
-                        <p><?php echo htmlspecialchars($project['skills']); ?></p>
+                        <p><?php echo htmlspecialchars($project['technologies']); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>

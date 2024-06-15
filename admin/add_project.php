@@ -44,10 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un Projet</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_add.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@300;400;500;700&display=swap">
 </head>
 <body>
     <header>
+        <a href="dashboard.php" class="back-button">&larr; Retour</a>
         <h1>Ajouter un Projet</h1>
     </header>
     <section id="add-project">
