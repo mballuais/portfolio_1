@@ -23,7 +23,8 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Matteo Balluais</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@300;400;500;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
 </head>
 
 <body>
@@ -85,7 +86,16 @@ Mon parcours inclut le développement d'une application de devis automobiles en 
                 <?php foreach ($projects as $project): ?>
                     <div class="project-item">
                         <a href="project/project.php?id=<?php echo $project['id']; ?>">
-                            <img src="images/<?php echo htmlspecialchars($project['image']); ?>" alt="<?php echo htmlspecialchars($project['title']); ?>">
+                            <?php
+                            // Récupérer la première image du projet
+                            $image_query = $conn->prepare("SELECT image FROM project_images WHERE project_id = :project_id LIMIT 1");
+                            $image_query->bindParam(':project_id', $project['id'], PDO::PARAM_INT);
+                            $image_query->execute();
+                            $image = $image_query->fetch(PDO::FETCH_ASSOC);
+                            ?>
+                            <?php if ($image): ?>
+                                <img src="images/<?php echo htmlspecialchars($image['image']); ?>" alt="<?php echo htmlspecialchars($project['title']); ?>">
+                            <?php endif; ?>
                             <h3><?php echo htmlspecialchars($project['title']); ?></h3>
                         </a>
                         <p><?php echo htmlspecialchars($project['technologies']); ?></p>

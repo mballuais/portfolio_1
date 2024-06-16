@@ -29,7 +29,8 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
     <link rel="stylesheet" href="../css/dashboard_css.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@300;400;500;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
 </head>
 <body>
     <header class="navbar">
@@ -50,7 +51,7 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
                         <span><?php echo htmlspecialchars($project['title']); ?></span>
                         <div class="btn-group">
                             <a class="btn btn-sm btn-primary" href="edit_project.php?id=<?php echo $project['id']; ?>">Modifier</a>
-                            <a class="btn btn-sm btn-danger" href="delete_project.php?id=<?php echo $project['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?');">Supprimer</a>
+                            <a class="btn btn-sm btn-danger delete-btn" href="delete_project.php?id=<?php echo $project['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?');">Supprimer</a>
                         </div>
                     </li>
                 <?php endforeach; ?>
@@ -64,7 +65,7 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
                         <div>
                             <strong><?php echo htmlspecialchars($comment['author']); ?></strong> : <?php echo htmlspecialchars($comment['content']); ?>
                         </div>
-                        <a class="btn btn-sm btn-danger" href="delete_comment.php?id=<?php echo $comment['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">Supprimer</a>
+                        <a class="btn btn-sm btn-danger delete-btn" href="delete_comment.php?id=<?php echo $comment['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">Supprimer</a>
                     </li>
                 <?php endforeach; ?>
             </ul>

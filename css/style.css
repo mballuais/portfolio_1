@@ -1,5 +1,5 @@
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #1c1f24;
   color: #fff;
   margin: 0;
@@ -94,7 +94,7 @@ body {
 }
 
 .main-content h1 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 48px;
   margin: 0;
   color: #00bcd4;
@@ -119,9 +119,10 @@ body {
 }
 
 #about .profile-photo img {
+  margin-left: 160px;
   max-width: 50%;
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 40%;
+  box-shadow: 15px 0 0 rgba(0, 0, 0, 0.3);
 }
 
 #about .bio {
@@ -130,7 +131,7 @@ body {
 }
 
 #about .bio h2 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
   color: #00bcd4;
@@ -167,7 +168,7 @@ body {
 }
 
 #skills h2 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
   color: #00bcd4;
@@ -197,7 +198,7 @@ body {
 }
 
 .skill h3 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 20px;
   margin-bottom: 0.5rem;
   color: #00bcd4;
@@ -215,7 +216,7 @@ body {
 }
 
 #projects h2 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
   color: #00bcd4;
@@ -233,7 +234,7 @@ body {
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  width: 200px;
+  width: 300px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -250,7 +251,7 @@ body {
 }
 
 .project-item h3 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 18px;
   margin: 0;
   color: #00bcd4;
@@ -267,7 +268,7 @@ body {
 }
 
 #contact h2 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
   color: #00bcd4;
