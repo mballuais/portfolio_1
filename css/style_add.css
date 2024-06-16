@@ -56,7 +56,7 @@ header h1 {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   width: 400px;
   text-align: left;
-  margin-top: 80px; /* Ajuster pour la hauteur de l'en-tête */
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,20 +76,30 @@ header h1 {
 #add-project input[type="text"],
 #add-project textarea,
 #add-project input[type="file"] {
-  width: calc(100% - 20px); /* Réduire la largeur pour éviter le dépassement */
+  width: calc(100% - 20px);
   padding: 10px;
   border: 1px solid #546e7a;
   border-radius: 5px;
   font-size: 16px;
   color: #fff;
   background-color: #37474f;
-  margin-left: 10px; /* Ajouter une marge à gauche */
+  margin-left: 10px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #add-project input[type="text"]::placeholder,
 #add-project textarea::placeholder,
 #add-project input[type="file"]::placeholder {
   color: #b0bec5;
+}
+
+#add-project input[type="text"]:focus,
+#add-project textarea:focus,
+#add-project input[type="file"]:focus {
+  transform: scale(1.05);
+  border-color: #00bcd4;
+  box-shadow: 0 0 10px #00bcd4;
+  outline: none;
 }
 
 #add-project button {

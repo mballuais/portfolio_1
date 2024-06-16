@@ -62,8 +62,8 @@ header h1 {
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   width: 400px;
-  max-height: 70vh; /* Limiter la hauteur à 70% de la vue */
-  overflow-y: auto; /* Ajouter un défilement vertical */
+  max-height: 70vh;
+  overflow-y: auto;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -85,20 +85,30 @@ header h1 {
 #edit-project input[type="text"],
 #edit-project textarea,
 #edit-project input[type="file"] {
-  width: calc(100% - 20px); /* Réduire la largeur pour éviter le dépassement */
+  width: calc(100% - 20px);
   padding: 10px;
   border: 1px solid #546e7a;
   border-radius: 5px;
   font-size: 16px;
   color: #fff;
   background-color: #37474f;
-  margin-left: 10px; /* Ajouter une marge à gauche */
+  margin-left: 10px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #edit-project input[type="text"]::placeholder,
 #edit-project textarea::placeholder,
 #edit-project input[type="file"]::placeholder {
   color: #b0bec5;
+}
+
+#edit-project input[type="text"]:focus,
+#edit-project textarea:focus,
+#edit-project input[type="file"]:focus {
+  transform: scale(1.05);
+  border-color: #00bcd4;
+  box-shadow: 0 0 10px #00bcd4;
+  outline: none;
 }
 
 #edit-project button {
