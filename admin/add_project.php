@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0"></script>
-    <script src="../js/scriptindex.js" defer></script> <!-- Link to the external JS file -->
+    <script src="../js/particules.js" defer></script> <!-- Link to the external JS file -->
 </head>
 <body>
     <div id="particles-js"></div>

@@ -58,7 +58,6 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
                 <p>Je suis Matteo Balluais, étudiant en Bachelor Chef de Projets Digitaux à la Normandie Web School et passionné par le développement web. Je recherche une alternance dès septembre 2024 pour renforcer mes compétences en PHP, JavaScript, WordPress, Python et MySQL.
 
 Mon parcours inclut le développement d'une application de devis automobiles en Python et ReactJS chez Promo Assurance, ainsi que des projets associatifs et sportifs qui montrent mon esprit d'équipe et mon leadership.</p>
-                <a href="#projects" class="btn">En savoir plus</a>
             </div>
         </div>
     </section>
@@ -109,7 +108,7 @@ Mon parcours inclut le développement d'une application de devis automobiles en 
             <h2>Intéressé par mon profil?</h2>
             <p>N'hésitez pas à prendre contact</p>
             <a href="mailto:contact@matteoballuais.fr" class="btn">Contactez-moi</a>
-            <p class="contact-info">Contact: matteoballuais@normandiewebschool.fr</p>
+            <p class="contact-info">Contact: mballuais@normandiewebschool.fr</p>
         </div>
     </section>
     <footer>
@@ -118,6 +117,6 @@ Mon parcours inclut le développement d'une application de devis automobiles en 
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/scriptindex.js"></script> 
+    <script src="js/particules.js"></script> 
 </body>
 </html>

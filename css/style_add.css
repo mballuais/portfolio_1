@@ -37,17 +37,16 @@ header h1 {
   position: absolute;
   bottom: 120px;
   right: 950px;
-  background-color: #ff5252;
-  color: white;
+  background-color: white;
+  color: #05707e;
   padding: 10px 25px;
   text-decoration: none;
   border-radius: 5px;
   font-size: 16px;
-  white-space: nowrap;
 }
 
 .back-button:hover {
-  background-color: #e64a19;
+  background-color: rgb(148, 142, 142);
 }
 
 #add-project {
