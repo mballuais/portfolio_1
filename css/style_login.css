@@ -46,6 +46,7 @@ header h1 {
   border-radius: 5px;
   font-size: 16px;
   z-index: 1;
+  white-space: nowrap;
 }
 
 .back-button:hover {
