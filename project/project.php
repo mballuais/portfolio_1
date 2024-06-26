@@ -1,5 +1,4 @@
 <?php
-// Connexion à la base de données
 $host = 'localhost';
 $db = 'portfolio';
 $user = 'root';
@@ -12,10 +11,8 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-// Récupérer l'ID du projet depuis l'URL
 $project_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Récupérer les informations du projet
 $query = $conn->prepare("SELECT * FROM projects WHERE id = :id");
 $query->bindParam(':id', $project_id, PDO::PARAM_INT);
 $query->execute();
@@ -25,13 +22,11 @@ if (!$project) {
     die("Projet non trouvé.");
 }
 
-// Récupérer les images du projet
 $images_query = $conn->prepare("SELECT * FROM project_images WHERE project_id = :project_id");
 $images_query->bindParam(':project_id', $project_id, PDO::PARAM_INT);
 $images_query->execute();
 $images = $images_query->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer les commentaires pour le projet
 $comments_query = $conn->prepare("SELECT * FROM comments WHERE project_id = :id ORDER BY created_at DESC");
 $comments_query->bindParam(':id', $project_id, PDO::PARAM_INT);
 $comments_query->execute();

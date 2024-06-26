@@ -6,7 +6,6 @@ if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
     exit();
 }
 
-// Connexion à la base de données
 $host = 'localhost';
 $db = 'portfolio';
 $user = 'root';
@@ -20,12 +19,10 @@ try {
     exit();
 }
 
-// Récupérer les données du formulaire
 $title = $_POST['title'];
 $subtitle = $_POST['subtitle'];
 $content = $_POST['content'];
 
-// Mettre à jour la table homepage_content
 $sql = "UPDATE homepage_content SET title=:title, subtitle=:subtitle, content=:content WHERE id=1";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':title', $title);

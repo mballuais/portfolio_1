@@ -6,7 +6,6 @@ if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
     exit();
 }
 
-// Connexion à la base de données
 $host = 'localhost';
 $db = 'portfolio';
 $user = 'root';
@@ -14,28 +13,23 @@ $pass = 'admin';
 
 $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
-// Récupérer l'ID du projet depuis l'URL
 $project_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Récupérer les informations du projet
 $query = $conn->prepare("SELECT * FROM projects WHERE id = :id");
 $query->bindParam(':id', $project_id, PDO::PARAM_INT);
 $query->execute();
 $project = $query->fetch(PDO::FETCH_ASSOC);
 
-// Récupérer les images du projet
 $images_query = $conn->prepare("SELECT * FROM project_images WHERE project_id = :project_id");
 $images_query->bindParam(':project_id', $project_id, PDO::PARAM_INT);
 $images_query->execute();
 $images = $images_query->fetchAll(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Récupérer les informations du formulaire
     $title = $_POST['title'];
     $description = $_POST['description'];
     $technologies = $_POST['technologies'];
 
-    // Mettre à jour le projet dans la base de données
     $query = $conn->prepare("UPDATE projects SET title = :title, description = :description, technologies = :technologies WHERE id = :id");
     $query->bindParam(':title', $title, PDO::PARAM_STR);
     $query->bindParam(':description', $description, PDO::PARAM_STR);
@@ -43,10 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query->bindParam(':id', $project_id, PDO::PARAM_INT);
     $query->execute();
 
-    // Supprimer les images sélectionnées
     if (isset($_POST['delete_images'])) {
         foreach ($_POST['delete_images'] as $delete_image_id) {
-            // Récupérer le nom de l'image pour la supprimer du serveur
             $delete_image_query = $conn->prepare("SELECT image FROM project_images WHERE id = :id");
             $delete_image_query->bindParam(':id', $delete_image_id, PDO::PARAM_INT);
             $delete_image_query->execute();
@@ -58,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     unlink($image_path);
                 }
 
-                // Supprimer l'image de la base de données
                 $delete_image_query = $conn->prepare("DELETE FROM project_images WHERE id = :id");
                 $delete_image_query->bindParam(':id', $delete_image_id, PDO::PARAM_INT);
                 $delete_image_query->execute();
@@ -66,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Vérifier si de nouvelles images ont été téléchargées
     if (!empty($_FILES['images']['name'][0])) {
         foreach ($_FILES['images']['name'] as $key => $image_name) {
             $image_tmp = $_FILES['images']['tmp_name'][$key];
@@ -79,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Rediriger vers le dashboard
     header('Location: dashboard.php');
     exit();
 }

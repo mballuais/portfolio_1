@@ -1,5 +1,4 @@
 <?php
-// Connexion à la base de données
 $host = 'localhost';
 $db = 'portfolio';
 $user = 'root';
@@ -7,20 +6,16 @@ $pass = 'admin';
 
 $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
-// Récupérer les informations de l'utilisateur
 $query = $conn->prepare("SELECT * FROM users WHERE username = 'admin'");
 $query->execute();
 $user_info = $query->fetch(PDO::FETCH_ASSOC);
 
-// Récupérer les projets
 $projects_query = $conn->query("SELECT * FROM projects");
 $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer les informations de la page d'accueil
 $homepage_query = $conn->query("SELECT * FROM homepage_content LIMIT 1");
 $homepage_content = $homepage_query->fetch(PDO::FETCH_ASSOC);
 
-// Initialiser les valeurs par défaut si aucune donnée n'est trouvée
 if (!$homepage_content) {
     $homepage_content = [
         'title' => 'Titre par défaut',
@@ -55,7 +50,7 @@ if (!$homepage_content) {
         </div>
     </header>
     <section id="main">
-        <div id="particles-js" class="particles"></div> <!-- Div pour les particules -->
+        <div id="particles-js" class="particles"></div> 
         <div class="main-content">
             <h1><?php echo htmlspecialchars($homepage_content['title']); ?></h1>
             <p><?php echo htmlspecialchars($homepage_content['subtitle']); ?></p>
@@ -97,7 +92,6 @@ if (!$homepage_content) {
                     <div class="project-item">
                         <a href="project/project.php?id=<?php echo $project['id']; ?>">
                             <?php
-                            // Récupérer la première image du projet
                             $image_query = $conn->prepare("SELECT image FROM project_images WHERE project_id = :project_id LIMIT 1");
                             $image_query->bindParam(':project_id', $project['id'], PDO::PARAM_INT);
                             $image_query->execute();

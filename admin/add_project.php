@@ -7,7 +7,6 @@ if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Connexion à la base de données
     $host = 'localhost';
     $db = 'portfolio';
     $user = 'root';
@@ -15,12 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
-    // Récupérer les informations du formulaire
     $title = $_POST['title'];
     $description = $_POST['description'];
     $technologies = $_POST['technologies'];
 
-    // Ajouter le projet à la base de données
     $query = $conn->prepare("INSERT INTO projects (title, description, technologies) VALUES (:title, :description, :technologies)");
     $query->bindParam(':title', $title, PDO::PARAM_STR);
     $query->bindParam(':description', $description, PDO::PARAM_STR);
@@ -29,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $project_id = $conn->lastInsertId();
 
-    // Handle multiple image uploads
     foreach ($_FILES['images']['name'] as $key => $image_name) {
         $image_tmp = $_FILES['images']['tmp_name'][$key];
         move_uploaded_file($image_tmp, "../images/$image_name");
@@ -40,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $image_query->execute();
     }
 
-    // Rediriger vers le dashboard
     header('Location: dashboard.php');
     exit();
 }
@@ -55,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0"></script>
-    <script src="../js/particules.js" defer></script> <!-- Link to the external JS file -->
+    <script src="../js/particules.js" defer></script> 
 </head>
 <body>
     <div id="particles-js"></div>

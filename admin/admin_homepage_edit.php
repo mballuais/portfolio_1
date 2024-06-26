@@ -6,7 +6,6 @@ if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
     exit();
 }
 
-// Connexion à la base de données
 $host = 'localhost';
 $db = 'portfolio';
 $user = 'root';
@@ -20,11 +19,9 @@ try {
     exit();
 }
 
-// Initialiser les variables pour les messages d'erreur
 $titleErr = $subtitleErr = $contentErr = "";
 $title = $subtitle = $content = "";
 
-// Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["title"])) {
         $titleErr = "Le titre est requis";
@@ -44,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $content = $_POST["content"];
     }
 
-    // Si aucun champ n'est vide, mettre à jour la base de données
     if ($title && $subtitle && $content) {
         $sql = "UPDATE homepage_content SET title=:title, subtitle=:subtitle, content=:content WHERE id=1";
         $stmt = $conn->prepare($sql);
@@ -60,11 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Récupérer les informations actuelles de la page d'accueil
 $result = $conn->query("SELECT * FROM homepage_content LIMIT 1");
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
-// Initialiser les valeurs par défaut si aucune donnée n'est trouvée
 if (!$row) {
     $row = [
         'title' => '',

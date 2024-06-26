@@ -2,7 +2,6 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Connexion à la base de données
     $host = 'localhost';
     $db = 'portfolio';
     $user = 'root';
@@ -14,12 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } catch (PDOException $e) {
         die("Erreur de connexion : " . $e->getMessage());
     }
-
-    // Récupérer les informations du formulaire
+  
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Vérifier les informations de l'utilisateur
     $query = $conn->prepare("SELECT * FROM users WHERE username = :username");
     $query->bindParam(':username', $username, PDO::PARAM_STR);
     $query->execute();
