@@ -15,13 +15,26 @@ $user_info = $query->fetch(PDO::FETCH_ASSOC);
 // Récupérer les projets
 $projects_query = $conn->query("SELECT * FROM projects");
 $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
+
+// Récupérer les informations de la page d'accueil
+$homepage_query = $conn->query("SELECT * FROM homepage_content LIMIT 1");
+$homepage_content = $homepage_query->fetch(PDO::FETCH_ASSOC);
+
+// Initialiser les valeurs par défaut si aucune donnée n'est trouvée
+if (!$homepage_content) {
+    $homepage_content = [
+        'title' => 'Titre par défaut',
+        'subtitle' => 'Sous-titre par défaut',
+        'content' => 'Contenu par défaut'
+    ];
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Matteo Balluais</title>
+    <title><?php echo htmlspecialchars($homepage_content['title']); ?></title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
@@ -44,8 +57,8 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
     <section id="main">
         <div id="particles-js" class="particles"></div> <!-- Div pour les particules -->
         <div class="main-content">
-            <h1>Matteo Balluais</h1>
-            <p>Développeur Web</p>
+            <h1><?php echo htmlspecialchars($homepage_content['title']); ?></h1>
+            <p><?php echo htmlspecialchars($homepage_content['subtitle']); ?></p>
         </div>
     </section>
     <section id="about">
@@ -55,9 +68,7 @@ $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="bio">
                 <h2>Bienvenue sur mon portfolio</h2>
-                <p>Je suis Matteo Balluais, étudiant en Bachelor Chef de Projets Digitaux à la Normandie Web School et passionné par le développement web. Je recherche une alternance dès septembre 2024 pour renforcer mes compétences en PHP, JavaScript, WordPress, Python et MySQL.
-
-Mon parcours inclut le développement d'une application de devis automobiles en Python et ReactJS chez Promo Assurance, ainsi que des projets associatifs et sportifs qui montrent mon esprit d'équipe et mon leadership.</p>
+                <p><?php echo htmlspecialchars($homepage_content['content']); ?></p>
             </div>
         </div>
     </section>

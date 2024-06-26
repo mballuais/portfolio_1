@@ -12,7 +12,13 @@ $db = 'portfolio';
 $user = 'root';
 $pass = 'admin';
 
-$conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Erreur de connexion : " . $e->getMessage();
+    exit();
+}
 
 // Récupérer les projets
 $projects_query = $conn->query("SELECT * FROM projects");
@@ -29,7 +35,7 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
     <link rel="stylesheet" href="../css/dashboard_css.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
 </head>
 <body>
@@ -40,6 +46,12 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </header>
     <div class="container">
+        <section id="homepage">
+            <div class="section-header">
+                <h2>Page d'accueil</h2>
+                <a class="btn btn-primary" href="admin_homepage_edit.php">Modifier la page d'accueil</a>
+            </div>
+        </section>
         <section id="projects">
             <div class="section-header">
                 <h2>Projets</h2>
