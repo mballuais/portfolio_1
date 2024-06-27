@@ -1,30 +1,36 @@
+/* General styles */
 body {
   font-family: "Poppins", sans-serif;
   background-color: #1c1f24;
   color: #fff;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-.header {
+/* Header styles */
+.header,
+header {
   background-color: #2a2e35;
   padding: 1rem;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  position: fixed;
+  text-align: center;
   width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
 }
 
-.header .container {
+.header .container,
+header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.header .logo img {
-  max-height: 60px;
 }
 
 .header .navbar-nav {
@@ -32,30 +38,27 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
-  align-items: center;
 }
 
 .header .nav-item {
   margin-left: 20px;
 }
 
-.header .nav-link {
+.header .nav-link,
+header .nav-link {
   color: #00bcd4;
   text-decoration: none;
   font-size: 16px;
-  padding: 0.5rem 1rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.header .nav-link:hover {
-  background-color: #00bcd4;
-  color: #1c1f24;
-  border-radius: 5px;
+.header .nav-link:hover,
+header .nav-link:hover {
+  text-decoration: underline;
 }
 
 .header .admin-login {
-  margin-left: auto; /* S'assurer que ce lien est aligné à droite */
-  margin-right: 30px; /* Ajouter une marge à droite */
+  margin-left: auto;
+  margin-right: 30px;
 }
 
 .header .btn-outline-light {
@@ -72,8 +75,13 @@ body {
   background-color: #0097a7;
 }
 
+.header .logo img {
+  max-height: 60px;
+}
+
+/* Main styles */
 #main {
-  margin-top: 80px; /* pour compenser le header fixe */
+  margin-top: 80px;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -83,14 +91,16 @@ body {
   align-items: center;
   color: #fff;
   text-align: center;
-  overflow: hidden; /* Pour assurer que les particules ne dépassent pas */
+  overflow: hidden;
 }
 
 #particles-js {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Derrière le texte */
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .main-content h1 {
@@ -106,6 +116,7 @@ body {
   color: #00bcd4;
 }
 
+/* About section */
 #about .container {
   display: flex;
   align-items: center;
@@ -128,7 +139,7 @@ body {
 #about .bio {
   flex: 2;
   padding: 0 2rem;
-  margin-right: 70px; /* Ajoutez une marge à droite */
+  margin-right: 70px;
 }
 
 #about .bio h2 {
@@ -163,6 +174,7 @@ body {
   background-color: #0097a7;
 }
 
+/* Skills section */
 #skills .container {
   padding: 2rem;
   text-align: center;
@@ -183,8 +195,8 @@ body {
 }
 
 .skill {
-  flex: 1 1 calc(25% - 1rem); /* Réduire la largeur des compétences */
-  max-width: 600px; /* Fixer une largeur maximale */
+  flex: 1 1 calc(25% - 1rem);
+  max-width: 600px;
   background-color: #2a2e35;
   padding: 1rem;
   border-radius: 8px;
@@ -210,6 +222,7 @@ body {
   line-height: 1.4;
 }
 
+/* Projects section */
 #projects .container {
   padding: 2rem;
   text-align: center;
@@ -263,6 +276,7 @@ body {
   color: #b0bec5;
 }
 
+/* Contact section */
 #contact .container {
   padding: 2rem;
   text-align: center;
@@ -296,6 +310,7 @@ body {
   color: #b0bec5;
 }
 
+/* Footer */
 footer .container {
   padding: 1rem;
   text-align: center;
@@ -307,4 +322,383 @@ footer p {
   margin: 0;
   font-size: 14px;
   color: #b0bec5;
+}
+
+/* Carousel controls */
+.custom-control-prev,
+.custom-control-next {
+  width: 5%;
+}
+
+.custom-control-prev-icon,
+.custom-control-next-icon {
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.custom-control-prev {
+  left: -7%;
+}
+
+.custom-control-next {
+  right: -7%;
+}
+
+/* Project details and comments */
+#project-details,
+#comments {
+  background-color: #2a2e35;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+}
+
+#project-details h2,
+#comments h2 {
+  font-family: "Orbitron", sans-serif;
+  border-bottom: 2px solid #00bcd4;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 20px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-item {
+  border-bottom: 1px solid #37474f;
+  padding: 1rem 0;
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+#comment-form {
+  background-color: #1c1f24;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 600px;
+}
+
+#comment-form .form-group {
+  margin-bottom: 1rem;
+}
+
+#comment-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #b0bec5;
+}
+
+#comment-form input,
+#comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #546e7a;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #37474f;
+}
+
+#comment-form button {
+  background-color: #00bcd4;
+  border: none;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#comment-form button:hover {
+  background-color: #0097a7;
+}
+
+.btn-return {
+  display: block;
+  margin: 0 auto 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #00bcd4;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-return:hover {
+  background-color: #0097a7;
+}
+
+/* Login styles */
+#login {
+  background-color: #2a2e35;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  z-index: 1;
+}
+
+#login p {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#login label {
+  display: block;
+  margin-bottom: 5px;
+  color: #b0bec5;
+  text-align: left;
+}
+
+#login input[type="text"],
+#login input[type="password"] {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #546e7a;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #37474f;
+  text-align: left;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#login input[type="text"]::placeholder,
+#login input[type="password"]::placeholder {
+  color: #b0bec5;
+}
+
+#login input[type="text"]:focus,
+#login input[type="password"]:focus {
+  transform: scale(1.05);
+  border-color: #00bcd4;
+  box-shadow: 0 0 10px #00bcd4;
+  outline: none;
+}
+
+#login button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00bcd4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#login button:hover {
+  background-color: #0097a7;
+}
+
+#error {
+  color: #ff5252;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Add project form */
+#add-project {
+  background-color: #2a2e35;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#add-project p {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#add-project label {
+  display: block;
+  margin-bottom: 5px;
+  color: #b0bec5;
+}
+
+#add-project input[type="text"],
+#add-project textarea,
+#add-project input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #546e7a;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #37474f;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#add-project input[type="text"]::placeholder,
+#add-project textarea::placeholder,
+#add-project input[type="file"]::placeholder {
+  color: #b0bec5;
+}
+
+#add-project input[type="text"]:focus,
+#add-project textarea:focus,
+#add-project input[type="file"]:focus {
+  transform: scale(1.05);
+  border-color: #00bcd4;
+  box-shadow: 0 0 10px #00bcd4;
+  outline: none;
+}
+
+#add-project button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00bcd4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#add-project button:hover {
+  background-color: #0097a7;
+}
+
+/* Section header styles */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  border-bottom: 2px solid #00bcd4;
+  padding-bottom: 0.5rem;
+  margin: 0;
+  font-size: 20px;
+}
+
+/* List group styles */
+.list-group {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-group-item {
+  background-color: #2a2e35;
+  border: 1px solid #37474f;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group-item span {
+  font-size: 16px;
+  color: #b0bec5;
+}
+
+/* Button group styles */
+.btn-group .btn,
+.delete-btn,
+.btn-return,
+.header .btn {
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+.btn-group .btn-primary:hover,
+.btn-return:hover,
+.header .btn:hover {
+  background-color: #0097a7;
+}
+
+.btn-group .btn-danger,
+.delete-btn {
+  background-color: #e53935;
+}
+
+.btn-group .btn-danger:hover,
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+.btn-success {
+  background-color: #28a745;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Titles and text alignments */
+.title {
+  color: #00bcd4;
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+header h1 {
+  font-family: "Orbitron", sans-serif;
+  color: #00bcd4;
+  font-size: 40px;
+  margin-top: 0;
+}
+
+/* Back button */
+.back-button {
+  position: absolute;
+  top: calc(100% + 20px); /* Below the header */
+  left: 20px;
+  background-color: white;
+  color: #05707e;
+  padding: 10px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.back-button:hover {
+  background-color: rgb(148, 142, 142);
 }

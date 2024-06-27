@@ -6,6 +6,7 @@ if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
     exit();
 }
 
+// Connexion à la base de données
 $host = 'localhost';
 $db = 'portfolio';
 $user = 'root';
@@ -19,9 +20,11 @@ try {
     exit();
 }
 
+// Récupérer les projets
 $projects_query = $conn->query("SELECT * FROM projects");
 $projects = $projects_query->fetchAll(PDO::FETCH_ASSOC);
 
+// Récupérer les commentaires
 $comments_query = $conn->query("SELECT * FROM comments");
 $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -46,7 +49,7 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
         <section id="homepage">
             <div class="section-header">
                 <h2>Page d'accueil</h2>
-                <a class="btn" href="admin_homepage_edit.php">Modifier la page d'accueil</a>
+                <a class="btn btn-success" href="admin_homepage_edit.php">Modifier la page d'accueil</a>
             </div>
         </section>
         <section id="projects">
@@ -59,8 +62,8 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
                     <li class="list-group-item">
                         <span><?php echo htmlspecialchars($project['title']); ?></span>
                         <div class="btn-group">
-                            <a class="btn href="edit_project.php?id=<?php echo $project['id']; ?>">Modifier</a>
-                            <a class="btn btn-danger" href="delete_project.php?id=<?php echo $project['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?');">Supprimer</a>
+                            <a class="btn btn-sm btn-primary" href="edit_project.php?id=<?php echo $project['id']; ?>">Modifier</a>
+                            <a class="btn btn-sm btn-danger delete-btn" href="delete_project.php?id=<?php echo $project['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?');">Supprimer</a>
                         </div>
                     </li>
                 <?php endforeach; ?>
