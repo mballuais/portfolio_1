@@ -42,6 +42,7 @@ header .container {
 
 .header .nav-item {
   margin-left: 20px;
+  margin-right: 20px; /* Ajout d'espace à droite de chaque élément */
 }
 
 .header .nav-link,
@@ -77,6 +78,11 @@ header .nav-link:hover {
 
 .header .logo img {
   max-height: 60px;
+}
+
+/* Main content styles */
+.container.content {
+  padding-top: 120px; /* Add padding to avoid content being hidden by the fixed header */
 }
 
 /* Main styles */

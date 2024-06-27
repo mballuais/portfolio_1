@@ -46,19 +46,10 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <header class="header">
         <div class="container">
-            <a class="logo" href="#">
-                <img src="../images/logo.png" alt="Logo" style="height: 40px;">
-            </a>
-            <nav class="navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="../">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../admin/login.php">Connexion Admin</a></li>
-                </ul>
-            </nav>
         </div>
         <h1 class="title"><?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?></h1>
     </header>
-    <div class="container">
+    <div class="container content">
         <section id="project-details">
             <h2>Description</h2>
             <p><?php echo htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
