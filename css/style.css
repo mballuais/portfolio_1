@@ -573,7 +573,8 @@ footer p {
 
 #add-project input[type="text"]:focus,
 #add-project textarea:focus,
-#add-project input[type="file"]:focus {
+#add-project input[type="file"]:focus
+#add-project input[type="url"]:focus{
   transform: scale(1.05);
   border-color: #00bcd4;
   box-shadow: 0 0 10px #00bcd4;
