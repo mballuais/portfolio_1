@@ -77,6 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="file" name="images[]" id="images" multiple required>
             </p>
             <p>
+                <label for="github">Lien GitHub (facultatif):</label>
+                <input type="url" name="github" id="github" placeholder="https://github.com/votre-projet">
+            </p>
+            <p>
                 <button type="submit">Ajouter</button>
             </p>
         </form>
