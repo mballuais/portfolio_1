@@ -553,7 +553,8 @@ footer p {
 
 #add-project input[type="text"],
 #add-project textarea,
-#add-project input[type="file"] {
+#add-project input[type="file"]
+#add-project input[type="url"]{
   width: 100%;
   padding: 10px;
   border: 1px solid #546e7a;
