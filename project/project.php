@@ -2,7 +2,7 @@
 $host = 'localhost';
 $db = 'portfolio';
 $user = 'root';
-$pass = 'admin';
+$pass = 'motdepasse';
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
