@@ -55,6 +55,10 @@ $comments = $comments_query->fetchAll(PDO::FETCH_ASSOC);
             <p><?php echo htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
             <h2>Technologies utilisées</h2>
             <p><?php echo htmlspecialchars($project['technologies'], ENT_QUOTES, 'UTF-8'); ?></p>
+            <?php if (!empty($project['github_link'])): ?>
+            <h2>Code Source</h2>
+            <p><a href="<?php echo htmlspecialchars($project['github_link'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank">Voir sur GitHub</a></p>
+            <?php endif; ?>
             <h2>Images</h2>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
