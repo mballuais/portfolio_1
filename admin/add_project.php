@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Informations de connexion à la base de données
-    $host = 'localhost';sss
+    $host = 'localhost';
     $db = 'portfolio';
     $user = 'root';
     $pass = 'motdepasse';
