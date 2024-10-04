@@ -7,53 +7,86 @@ if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Informations de connexion à la base de données
     $host = 'localhost';
     $db = 'portfolio';
     $user = 'root';
     $pass = 'motdepasse';
 
-    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    try {
+        // Connexion à la base de données avec gestion des erreurs
+        $conn = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $technologies = $_POST['technologies'];
+        // Récupérer les données du formulaire
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $technologies = $_POST['technologies'];
+        $github = isset($_POST['github']) ? $_POST['github'] : null;
 
-    $query = $conn->prepare("INSERT INTO projects (title, description, technologies) VALUES (:title, :description, :technologies)");
-    $query->bindParam(':title', $title, PDO::PARAM_STR);
-    $query->bindParam(':description', $description, PDO::PARAM_STR);
-    $query->bindParam(':technologies', $technologies, PDO::PARAM_STR);
-    $query->execute();
+        // Préparer et exécuter la requête pour insérer le projet
+        $query = $conn->prepare("INSERT INTO projects (title, description, technologies, github_link) VALUES (:title, :description, :technologies, :github_link)");
+        $query->bindParam(':title', $title, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':technologies', $technologies, PDO::PARAM_STR);
+        $query->bindParam(':github_link', $github, PDO::PARAM_STR);
+        $query->execute();
 
-    $project_id = $conn->lastInsertId();
+        // Récupérer l'ID du projet inséré
+        $project_id = $conn->lastInsertId();
 
-    foreach ($_FILES['images']['name'] as $key => $image_name) {
-        $image_tmp = $_FILES['images']['tmp_name'][$key];
-        move_uploaded_file($image_tmp, "../images/$image_name");
+        // Gestion des images
+        if (isset($_FILES['images']) && $_FILES['images']['error'][0] != UPLOAD_ERR_NO_FILE) {
+            $image_names = $_FILES['images']['name'];
+            $image_tmps = $_FILES['images']['tmp_name'];
+            $image_errors = $_FILES['images']['error'];
 
-        $image_query = $conn->prepare("INSERT INTO project_images (project_id, image) VALUES (:project_id, :image)");
-        $image_query->bindParam(':project_id', $project_id, PDO::PARAM_INT);
-        $image_query->bindParam(':image', $image_name, PDO::PARAM_STR);
-        $image_query->execute();
+            foreach ($image_names as $key => $image_name) {
+                // Vérifier s'il y a une erreur lors du téléchargement
+                if ($image_errors[$key] === UPLOAD_ERR_OK) {
+                    $image_tmp = $image_tmps[$key];
+                    $image_name = basename($image_name);
+                    $target_directory = dirname(__DIR__) . '/images/';
+                    $target_file = $target_directory . $image_name;
+
+                    // Vérifier que le répertoire cible existe, sinon le créer
+                    if (!file_exists($target_directory)) {
+                        mkdir($target_directory, 0755, true);
+                    }
+
+                    // Déplacer le fichier téléchargé vers le répertoire cible
+                    if (move_uploaded_file($image_tmp, $target_file)) {
+                        // Enregistrer le nom de l'image dans la base de données
+                        $image_query = $conn->prepare("INSERT INTO project_images (project_id, image) VALUES (:project_id, :image)");
+                        $image_query->bindParam(':project_id', $project_id, PDO::PARAM_INT);
+                        $image_query->bindParam(':image', $image_name, PDO::PARAM_STR);
+                        $image_query->execute();
+                    } else {
+                        echo "Échec du téléchargement de l'image : $image_name";
+                    }
+                } else {
+                    echo "Erreur lors du téléchargement de l'image : $image_name";
+                }
+            }
+        }
+
+        // Rediriger vers le tableau de bord après l'ajout
+        header('Location: dashboard.php');
+        exit();
+    } catch (PDOException $e) {
+        die("Erreur de connexion ou d'exécution : " . $e->getMessage());
     }
-
-    header('Location: dashboard.php');
-    exit();
 }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un Projet</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0"></script>
-    <script src="../js/particules.js" defer></script> 
+    <!-- Vos autres liens CSS et scripts -->
 </head>
 <body>
-    <div id="particles-js"></div>
     <header>
         <a href="dashboard.php" class="back-button">&larr; Retour</a>
         <h1>Ajouter un Projet</h1>
@@ -61,23 +94,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <section id="add-project">
         <form action="add_project.php" method="post" enctype="multipart/form-data">
             <p>
-                <label for="title">Titre:</label>
+                <label for="title">Titre :</label>
                 <input type="text" name="title" id="title" required>
             </p>
             <p>
-                <label for="description">Description:</label>
+                <label for="description">Description :</label>
                 <textarea name="description" id="description" required></textarea>
             </p>
             <p>
-                <label for="technologies">Technologies:</label>
+                <label for="technologies">Technologies :</label>
                 <input type="text" name="technologies" id="technologies" required>
             </p>
             <p>
-                <label for="images">Images:</label>
+                <label for="images">Images :</label>
                 <input type="file" name="images[]" id="images" multiple required>
             </p>
             <p>
-                <label for="github">Lien GitHub (facultatif):</label>
+                <label for="github">Lien GitHub (facultatif) :</label>
                 <input type="url" name="github" id="github" placeholder="https://github.com/votre-projet">
             </p>
             <p>
